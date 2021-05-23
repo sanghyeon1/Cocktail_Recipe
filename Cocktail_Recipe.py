@@ -6,6 +6,7 @@ rustynail = ['rustynail', 1, 0, ['scotch whiskey, 0.75', 'drambuie, 0.5']]
 blackrussian = ['blackrussian', 1, 0, ['bodka, 1', 'kahlua, 0.5']]
 moscowmule = ['moscowmule', 1, 'sliced lemon', ['bodka, 1.5', 'lime juice, 0.5', 'ginger ale, 8']]
 
+
 all_cocktail = [kir, negroni, oldfashioned, rustynail, blackrussian, moscowmule]
 
 
