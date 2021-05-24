@@ -14,12 +14,21 @@ long_island_ice_tea = ['long_island_ice_tea', 1, 'wedge lemon',
                     ['bodka, 0.5', 'tequila, 0.5', 'gin, 0.5', 'rum, 0.5', 'triple sec, 0.5', 'sour mix, 1.5', 'cola, 8fill']]
 harvey_wallbanger = ['harvey_wallbanger', 1, 0, ['bodka, 1.5', 'orange juice, 8fill', 'galliano, 0.5']]
 tequila_sunrise = ['tequila_sunrise', 1, 0, ['tequila, 1.5', 'orange juice, 8fill', 'grenadine syrup, 0.5float']]
-mai_tai = ['mai_tai', 1, 0,
+mai_tai = ['mai_tai', 1, 'wedge pineapple & cherry',
            ['rum, 1.25', 'triple sec, 0.75', 'lime juice, 1', 'orange juice, 1', 'pineapple juice, 1', 'grenadine syrup, 0.25']]
+blue_hawaiian = ['blue_hawaiian', 1, 'wedge pineapple & cherry',
+                 ['rum, 1.5', 'blue curacao, 1', 'cocnut flavored rum, 1', 'pineapple juice, 2.5' ]]
+pina_colada = ['pina_colada', 1, 'wedge pineapple & cherry', ['rum, 1.25', 'pina colada mix, 2', 'pineapple juice, 2']]
+b_52 = ['b_52', 0, 0, ['kahlua, 1/3part', 'baileys, 1/3part', 'grand marnier, 1/3part']]
+pousse_cafe = ['pousse_cafe', 0, 0, ['brandy, 1/3part', 'creme de menthe, 1/3part', 'grenadine syrup, 1/3part']]
+manhattan = ['manhattan', 1, 'cherry', ['bourbon whisky, 1.5', 'sweet vermouth, 3/4', 'angostura bitters, 1dash']]
+dry_martini = ['dry_martini', 1, 'olive', ['gin, 2', 'dry vermouth, 1/3']]
+gochang = ['gochang', 1, 0, ['선운산 복분자 주, 2', 'triple sec, 0.5', 'sprite, 2']]
 
 
 all_cocktail = [kir, negroni, old_fashioned, rusty_nail, black_russian, moscow_mule, bloody_mary, seabreeze, cuba_libre,
-                long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai]
+                long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai, blue_hawaiian, pina_colada, b_52,
+                pousse_cafe, manhattan, dry_martini, gochang]
 
 
 #  칵테일의 정보들을 출력해주는 함수
