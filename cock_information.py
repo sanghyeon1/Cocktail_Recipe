@@ -30,9 +30,14 @@ def cocktails():
     manhattan = ['manhattan', 1, 'cherry', ['bourbon whisky, 1.5', 'sweet vermouth, 3/4', 'angostura bitters, 1dash']]
     dry_martini = ['dry_martini', 1, 'olive', ['gin, 2', 'dry vermouth, 1/3']]
     gochang = ['gochang', 1, 0, ['선운산 복분자 주, 2', 'triple sec, 0.5', 'sprite, 2']]
-
+    sloe_gin_fizz = ['sloe_gin_fizz', 1, 'sliced lemon',
+                     ['sloe gin, 1.5', 'lemon juice, 0.5', 'sugar, 1tsp', 'club soda, 8fill']]
+    whisky_sour = ['whisky_sour', 1, 'sliced lemon & cherry',
+                   ['bourbon whisky, 1.5', 'lemon juice, 0.5', 'sugar, 1tsp', 'club soda, 1']]
+    singapore_sling = ['singapore_sling', 1, 'sliced orange & cherry',
+                       ['gin, 1.5', 'lemon juice, 0.5', 'sugar, 1tsp', 'club soda, 8fill', 'cherry brandy, 0.5float']]
     all_cocktails = [kir, negroni, old_fashioned, rusty_nail, black_russian, moscow_mule, bloody_mary, seabreeze, cuba_libre,
                     long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai, blue_hawaiian, pina_colada, b_52,
-                    pousse_cafe, manhattan, dry_martini, gochang]
+                    pousse_cafe, manhattan, dry_martini, gochang, sloe_gin_fizz, whisky_sour, singapore_sling]
 
     return all_cocktails
