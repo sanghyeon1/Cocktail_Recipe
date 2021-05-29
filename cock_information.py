@@ -22,7 +22,7 @@ def cocktails():
                ['rum, 1.25', 'triple sec, 0.75', 'lime juice, 1', 'orange juice, 1', 'pineapple juice, 1',
                 'grenadine syrup, 0.25']]
     blue_hawaiian = ['blue_hawaiian', 1, 'wedge pineapple & cherry',
-                     ['rum, 1.5', 'blue curacao, 1', 'cocnut flavored rum, 1', 'pineapple juice, 2.5']]
+                     ['rum, 1.5', 'blue curacao, 1', 'coconut flavored rum, 1', 'pineapple juice, 2.5']]
     pina_colada = ['pina_colada', 1, 'wedge pineapple & cherry',
                    ['rum, 1.25', 'pina colada mix, 2', 'pineapple juice, 2']]
     b_52 = ['b_52', 0, 0, ['kahlua, 1/3part', 'baileys, 1/3part', 'grand marnier, 1/3part']]
@@ -41,3 +41,5 @@ def cocktails():
                     pousse_cafe, manhattan, dry_martini, gochang, sloe_gin_fizz, whisky_sour, singapore_sling]
 
     return all_cocktails
+
+
