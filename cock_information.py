@@ -36,9 +36,24 @@ def cocktails():
                    ['bourbon whisky, 1.5', 'lemon juice, 0.5', 'sugar, 1tsp', 'club soda, 1']]
     singapore_sling = ['singapore_sling', 1, 'sliced orange & cherry',
                        ['gin, 1.5', 'lemon juice, 0.5', 'sugar, 1tsp', 'club soda, 8fill', 'cherry brandy, 0.5float']]
-    all_cocktails = [kir, negroni, old_fashioned, rusty_nail, black_russian, moscow_mule, bloody_mary, seabreeze, cuba_libre,
-                    long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai, blue_hawaiian, pina_colada, b_52,
-                    pousse_cafe, manhattan, dry_martini, gochang, sloe_gin_fizz, whisky_sour, singapore_sling]
+    honeymoon = ['honeymoon', 1, 0, ['kalbados, 3/4', 'benedictine DOM, 3/4', 'triple sec, 0.25', 'lemon juice, 0.5']]
+    sidecar = ['sidecar', 1, 0, ['brandy, 1', 'cointreau or triple sec, 1', 'lemon juice, 0.25']]
+    brandy_alexander = ['brandy_alexander', 1, 'nutmeg poweder', ['brandy, 3/4', 'creme de cacao, 3/4', 'milk, 3/4']]
+    newyork = ['newyork', 1, 'twist lomon peel',
+               ['bourbon whisky, 1.5', 'lime juice, 0.5', 'sugar, 1tsp', 'grenadine syrup, 0.5tsp']]
+    margarita = ['margarita', 0, 'salt rimming', ['tequila, 1.5', 'triple sec, 0.5', 'lime juice, 0.5']]
+    apple_martini = ['apple_martini', 0, 'sliced apple', ['vodka, 1', 'apple pucker, 1', 'lime juice, 0.5']]
+    kiss_of_fire = ['kiss_of_fire', 0, 'sugar rimming',
+                    ['vodka, 1', 'sloe gin, 0.5', 'dry vermouth, 0.5', 'lemon juice, 1tsp']]
+    cosmopolitan = ['cosmopolitan', 1, 'twist lemon peel',
+                    ['vodka, 1', 'triple sec, 0.5', 'lime juice, 0.5', 'cranberry juice, 0.5']]
+    bacardi = ['bacardi', 1, 0, ['rum, 1.75', 'lime juice, 3/4', 'grenadine syrup, 1tsp']]
+
+    all_cocktails = [kir, negroni, old_fashioned, rusty_nail, black_russian, moscow_mule, bloody_mary, seabreeze,
+                     cuba_libre, long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai, blue_hawaiian,
+                     pina_colada, b_52, pousse_cafe, manhattan, dry_martini, gochang, sloe_gin_fizz, whisky_sour,
+                     singapore_sling, honeymoon, sidecar, brandy_alexander, newyork, margarita, apple_martini,
+                     kiss_of_fire, cosmopolitan, bacardi]
 
     return all_cocktails
 
