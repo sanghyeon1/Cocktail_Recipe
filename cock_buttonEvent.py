@@ -107,16 +107,32 @@ def click_button2():
     label = Label(win_b2, text='아래에서 보유 중인 재료를 체크하십시오.\n===============================')
     label.pack()
 
-    def btn_check():
-        if ck_val.get() is True:
-            print("버튼이 체크 되었습니다.")
-        else:
-            print("버튼이 체크되지 않았습니다.")
+    hold_ingred = []
 
+    # 검색하기 버튼 클릭 이벤트
+    def btn_check():
+        for i in range(len(inhand)):
+            if ck_val[i].get() is True:
+                hold_ingred.append(inhand[i])
+            else:
+                pass
+        return hold_ingred
+
+    # 모두체크 기능
+    def check_all():
+        if ck_val2.get() is True:
+            for i in range(len(inhand)):
+                ck_val[i].set(True)
+
+        else:
+            for i in range(len(inhand)):
+                ck_val[i].set(False)
+
+    # ==========================체크 버튼 생성==========================================
     inhand = ['peach liqueur', 'tequila', 'rum', 'gin', 'bodka', 'coconut flavored rum',
               'triple sec', 'blue curacao', 'kahlua', 'midori', 'grenadine syrup',
               'creme de cassis', 'salt/pepper', 'sugar', 'club soda', 'ginger ale']
-    print(len(inhand))
+
     ck_val = [None] * len(inhand)
     ck_btn = [None] * len(inhand)
     j = 0
@@ -125,7 +141,7 @@ def click_button2():
         ck_val[i] = BooleanVar()
         ck_val[i].set(False)
         ck_btn[i] = Checkbutton(win_b2, text=inhand[i], font=("System", 20),
-                                variable=ck_val[i], command=btn_check)
+                                variable=ck_val[i])
 
         if i < 10:
             count = 100 + 40 * i
@@ -133,12 +149,78 @@ def click_button2():
         else:
             ck_btn[i].place(x=300, y=100 + 40 * j)
             j += 1
+    # ====================================================================================
 
-    btn_b2 = Button(win_b2, text="검색하기")
+    ck_val2 = BooleanVar()
+    ck_val2.set(False)
+    ck_btn2 = Checkbutton(win_b2, text="모두 체크", font=("System", 20),
+                          variable=ck_val2, command=check_all)
+    ck_btn2.place(x=200, y=count + 50)
+
+    btn_b2 = Button(win_b2, text="검색하기", command=lambda: [valid_to_make_list(btn_check())])
     btn_b2.option_add("*Font", "맑은고딕 30")
-    btn_b2.place(x=200, y=count + 50)
+    btn_b2.place(x=200, y=count + 80)
 
     win_b2.mainloop()
+
+
+# 만들 수 있는 칵테일 목록을 새 창으로 출력
+def valid_to_make_list(hold):
+    win_b2_1 = Toplevel()
+    win_b2_1.title("목록")
+    win_b2_1.geometry("1000x800")
+    win_b2_1.option_add("*Font", "맑은고딕 20")
+
+    label = Label(win_b2_1, text='만들 수 있는 칵테일 목록\n'
+                                 '===========================================================')
+    label.pack()
+
+    def load_image(num):
+        if num == 0:
+            pos_y = 100
+        else:
+            pos_y = 110
+        # 레이블 지우는 대신 이미지 로드로 레이블 덮어씌우기
+        load = Image.open(all_images[num][1])
+        photo = ImageTk.PhotoImage(load)
+        load_label = Label(win_b2_1, image=photo)
+        load_label.image = photo
+        load_label.place(x=0, y=pos_y)
+        # 칵테일 이름에 따른 이미지 로드
+
+    def show_recipe():
+        # 만들 수 있는 칵테일 리스트 목록이 생성됨.
+        valid_cocktails = available_to_make(hold)
+        for k in range(len(valid_cocktails)):
+            print(valid_cocktails[k][0])
+            recipe_lists = search(valid_cocktails[k][0])
+            j = 0
+            for i in all_images:
+                if i[0] == recipe_lists[0]:
+                    load_image(0)
+                    load_image(j)
+                else:
+                    j += 1
+                    pass
+
+        ingred_list = recipe_lists[3].split("재료 -[")
+        ingred_list = ingred_list[1][0:len(ingred_list[1]) - 1]
+        ingred_list = ingred_list.split("', '")
+
+        for i in range(4):
+            if i == 3:
+                for j in range(len(ingred_list)):
+                    srch_label6 = Label(win_b2_1, text="재료 - ")
+                    srch_label6.place(x=500, y=150 + (i * 30))
+                    srch_label3 = Label(win_b2_1, text=ingred_list[j])
+                    srch_label3.place(x=500, y=150 + ((i + 1) * 30) + (j * 30))
+            else:
+                srch_label3 = Label(win_b2_1, text=recipe_lists[i])
+                srch_label3.place(x=500, y=150 + (i * 30))
+
+    show_recipe()
+
+    win_b2_1.mainloop()
 
 
 def click_button3():
