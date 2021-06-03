@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from cocktail_guiFunctions import *
+import pathlib
 
 from cock_images import cocktail_image as ci
 
@@ -25,18 +26,25 @@ def click_button1():
         name = ent1.get()
         return name
 
+    # 레이블 지우는 대신 이미지 로드로 레이블 덮어씌우기
     def load_image(num):
-        if num == 0:
+        if num == 0:  # 뒷 배경 이미지 출력
             pos_y = 100
-        else:
+            image_path = str(pathlib.Path(__file__).parent.absolute())
+            image_path = image_path.replace("\\", "/", 10)
+            load = Image.open(image_path + '/images/transparent_image.png')
+            photo = ImageTk.PhotoImage(load)
+            load_label = Label(win_b1, image=photo)
+            load_label.image = photo
+            load_label.place(x=0, y=pos_y)
+        else:  # 칵테일 이름에 따른 이미지 로드
             pos_y = 110
-        # 레이블 지우는 대신 이미지 로드로 레이블 덮어씌우기
-        load = Image.open(all_images[num][1])
-        photo = ImageTk.PhotoImage(load)
-        load_label = Label(win_b1, image=photo)
-        load_label.image = photo
-        load_label.place(x=0, y=pos_y)
-        # 칵테일 이름에 따른 이미지 로드
+            load = Image.open(all_images[num][1])
+            photo = ImageTk.PhotoImage(load)
+            load_label = Label(win_b1, image=photo)
+            load_label.image = photo
+            load_label.place(x=0, y=pos_y)
+            # 칵테일 이름에 따른 이미지 로드
 
     def show_recipe():
         name = get_str()
@@ -111,6 +119,7 @@ def click_button2():
 
     # 검색하기 버튼 클릭 이벤트
     def btn_check():
+        hold_ingredient.clear()
         for i in range(len(inhand)):
             if ck_val[i].get() is True:
                 hold_ingredient.append(inhand[i])
@@ -170,37 +179,78 @@ num = 0  # 글로벌 변수 / 이미지 출력 시 사용.
 # 만들 수 있는 칵테일 목록을 새 창으로 출력
 # hold : 체크된 보유재료 목록 리스트.
 def valid_to_make_list(hold):
+    global num, all_images
+
     def before_image():
+        text_label_before = Label(win_b2_1, text='                        ')
+        text_label_before.place(x=400, y=700)
         global num
         num -= 1
         if len(py_img) == 1:
             num = 0
-        elif 0 < num < len(py_img):
-            load = Image.open(py_img[num])
-            photo = ImageTk.PhotoImage(load)
-            label_img = Label(win_b2_1, image=photo)
-            label_img.image = photo
-            label_img.place(x=0, y=100)
+        elif 0 <= num < len(py_img):
+            # 투명 배경 이미지 로드
+            load_betp = Image.open(all_images[0][1])
+            photo_betp = ImageTk.PhotoImage(load_betp)
+            label_betp = Label(win_b2_1, image=photo_betp)
+            label_betp.image = photo_betp
+            label_betp.place(x=0, y=100)
+
+            # 칵테일 사진 로드
+            load_before = Image.open(py_img[num])
+            photo_before = ImageTk.PhotoImage(load_before)
+            label_before = Label(win_b2_1, image=photo_before)
+            label_before.image = photo_before
+            label_before.place(x=0, y=100)
         elif num <= 0:
-            label_after = Label(win_b2_1, text='맨 처음입니다.')
-            label_after.place(x=400, y=700)
+            text_label_before = Label(win_b2_1, text='맨 처음입니다.')
+            text_label_before.place(x=400, y=700)
             num += 1
+        print_recipe(num)
 
     def after_image():
+        text_label_after = Label(win_b2_1, text='                        ')
+        text_label_after.place(x=400, y=700)
         global num
         num += 1
         if len(py_img) == 1:
             num = 0
-        elif 0 <= num < len(py_img) - 1:
-            load = Image.open(py_img[num])
-            photo = ImageTk.PhotoImage(load)
-            label_img = Label(win_b2_1, image=photo)
-            label_img.image = photo
-            label_img.place(x=0, y=100)
+        elif 0 <= num < len(py_img):
+            # 투명 배경 이미지 로드
+            load_aftp = Image.open(all_images[0][1])
+            photo_aftp = ImageTk.PhotoImage(load_aftp)
+            label_aftp = Label(win_b2_1, image=photo_aftp)
+            label_aftp.image = photo_aftp
+            label_aftp.place(x=0, y=100)
+            # 칵테일 사진 로드
+            load_after = Image.open(py_img[num])
+            photo_after = ImageTk.PhotoImage(load_after)
+            label_after = Label(win_b2_1, image=photo_after)
+            label_after.image = photo_after
+            label_after.place(x=0, y=100)
         elif num >= len(py_img) - 1:
-            label_after = Label(win_b2_1, text='마지막입니다.')
-            label_after.place(x=400, y=700)
+            text_label_after = Label(win_b2_1, text='마지막입니다.')
+            text_label_after.place(x=400, y=700)
             num -= 1
+        print_recipe(num)
+
+    def print_recipe(n):
+        global num
+        n = num
+        recipe_list = search(hold_recipe[n][0])
+        ingredient_list = recipe_list[3].split("재료 -[")
+        ingredient_list = ingredient_list[1][0:len(ingredient_list[1]) - 1]
+        ingredient_list = ingredient_list.split("', '")
+        for i in range(4):
+            if i == 3:
+                for j in range(len(ingredient_list)):
+                    search_label6 = Label(win_b2_1, text="재료 - ")
+                    search_label6.place(x=550, y=150 + (i * 30))
+                    search_label3 = Label(win_b2_1, text=ingredient_list[j])
+                    search_label3.place(x=550, y=150 + ((i + 1) * 30) + (j * 30))
+            else:
+                search_label3 = Label(win_b2_1, text=recipe_list[i])
+                search_label3.place(x=550, y=150 + (i * 30))
 
     win_b2_1 = Toplevel()
     win_b2_1.title("목록")
@@ -214,22 +264,31 @@ def valid_to_make_list(hold):
     py_img = []
 
     # 만들 수 있는 칵테일의 레시피 리스트
-    hold_ingredient = available_to_make(hold)
+    hold_recipe = available_to_make(hold)
 
     # py_img 리스트 데이터 생성.
-    for i in range(len(hold_ingredient)):
-        for j in range(len(all_images)):
-            if hold_ingredient[i][0] == all_images[j][0]:
-                py_img.append(all_images[j][1])
+    if not py_img:  # 빈 배열일 때.
+        for i in range(len(hold_recipe)):
+            for j in range(len(all_images)):
+                if hold_recipe[i][0] == all_images[j][0]:
+                    py_img.append(all_images[j][1])
+                else:
+                    pass
+    else:
+        pass
 
-            else:
-                pass
-
-    load = Image.open(py_img[0])
-    photo = ImageTk.PhotoImage(load)
-    label_img = Label(win_b2_1, image=photo)
-    label_img.image = photo
-    label_img.place(x=0, y=100)
+    # 맨 처음 칵테일 이미지 로드
+    if not py_img:
+        py_img.clear()
+        err = Label(win_b2_1, text="만들 수 있는 칵테일이 없습니다.", font="System, 40")
+        err.pack()
+    else:
+        load = Image.open(py_img[0])
+        photo = ImageTk.PhotoImage(load)
+        label = Label(win_b2_1, image=photo)
+        label.image = photo
+        label.place(x=0, y=100)
+        print_recipe(num)
 
     before_btn = Button(win_b2_1, text="이전", command=before_image)
     before_btn.place(x=200, y=600)
