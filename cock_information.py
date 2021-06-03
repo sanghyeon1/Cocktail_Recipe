@@ -48,12 +48,25 @@ def cocktails():
     cosmopolitan = ['cosmopolitan', 1, 'twist lemon peel',
                     ['vodka, 1', 'triple sec, 0.5', 'lime juice, 0.5', 'cranberry juice, 0.5']]
     bacardi = ['bacardi', 1, 0, ['rum, 1.75', 'lime juice, 3/4', 'grenadine syrup, 1tsp']]
+    daiquiri = ['daiquiri', 1, 0, ['rum, 1.75', 'lime juice, 3/4', 'sugar, 1tsp']]
+    june_bug = ['june_bug', 1, 'wedge pineapple & cherry',
+                ['midori, 1', 'coconut flavored rum, 0.5', 'banana liqueur, 0.5', 'pineapple juice, 2', 'sour mix, 2']]
+    grasshopper = ['grasshopper', 1, 0, ['creme de menthe green, 1', 'creme de cacao white, 1', 'milk, 1']]
+    apricot = ['apricot', 1, 0, ['apricot brandy, 1.5', 'gin, 1tsp', 'lemon juice, 0.5', 'orange juice, 0.5']]
+    geumsan = ['geumsan', 1, 0, ['geumsan insam ju, 1.5', 'kahlua, 0.5', 'apple pucker, 0.5', 'lime juice, 1tsp']]
+    jindo = ['jindo', 1, 0,
+             ['jindo hongju, 1', 'creme de menthe white, 0.5', 'white grape juice, 3/4', 'raspberry syrup, 0.5']]
+    puppy_love = ['puppy_love', 1, 'sliced apple',
+                  ['andong soju, 1', 'triple sec, 1/3', 'apple pucker, 1', 'lime juice, 1/3']]
+    healing = ['healing', 1, 'twist lemon peel',
+               ['gam hong ro, 1.5', 'benedictine, 1/3', 'creme de cassis, 1/3', 'sour mix, 1']]
 
     all_cocktails = [kir, negroni, old_fashioned, rusty_nail, black_russian, moscow_mule, bloody_mary, seabreeze,
                      cuba_libre, long_island_ice_tea, harvey_wallbanger, tequila_sunrise, mai_tai, blue_hawaiian,
                      pina_colada, b_52, pousse_cafe, manhattan, dry_martini, gochang, sloe_gin_fizz, whisky_sour,
                      singapore_sling, honeymoon, sidecar, brandy_alexander, newyork, margarita, apple_martini,
-                     kiss_of_fire, cosmopolitan, bacardi]
+                     kiss_of_fire, cosmopolitan, bacardi, daiquiri, june_bug, grasshopper, apricot, geumsan, jindo,
+                     puppy_love, healing]
 
     return all_cocktails
 
