@@ -283,6 +283,13 @@ def valid_to_make_list(hold):
         err = Label(win_b2_1, text="만들 수 있는 칵테일이 없습니다.", font="System, 40")
         err.pack()
     else:
+        # 투명 배경 출력
+        load_tp = Image.open(all_images[0][1])
+        photo_tp = ImageTk.PhotoImage(load_tp)
+        label_tp = Label(win_b2_1, image=photo_tp)
+        label_tp.image = photo_tp
+        label_tp.place(x=0, y=100)
+        # 첫 이미지와 레시피 출력
         load = Image.open(py_img[0])
         photo = ImageTk.PhotoImage(load)
         label = Label(win_b2_1, image=photo)
