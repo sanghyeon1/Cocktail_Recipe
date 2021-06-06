@@ -103,6 +103,9 @@ def click_button1():
     win_b1.mainloop()
 
 
+num = 0  # 글로벌 변수 / 이미지 출력 시 사용.
+
+
 # 보유 중인 재료 선택 후 만들 수 있는 칵테일 검색 이벤트
 def click_button2():
     win_b2 = Toplevel()
@@ -119,6 +122,8 @@ def click_button2():
 
     # 검색하기 버튼 클릭 이벤트
     def btn_check():
+        global num
+        num = 0
         hold_ingredient.clear()
         for i in range(len(inhand)):
             if ck_val[i].get() is True:
@@ -138,9 +143,9 @@ def click_button2():
                 ck_val[i].set(False)
 
     # ==========================체크 버튼 생성==========================================
-    inhand = ['peach liqueur', 'tequila', 'rum', 'gin', 'bodka', 'coconut flavored rum',
-              'triple sec', 'blue curacao', 'kahlua', 'midori', 'grenadine syrup',
-              'creme de cassis', 'salt/pepper', 'sugar', 'club soda', 'ginger ale']
+    inhand = ['peach liqueur', 'tequila', 'rum', 'gin', 'bodka', 'coconut flavored rum', 'triple sec', 'blue curacao',
+              'kahlua', 'midori', 'grenadine syrup', 'creme de cassis', 'salt/pepper', 'sugar', 'club soda',
+              'ginger ale', 'sour mix', 'amaretto', 'grand marnier', 'baileys', 'galliano']
 
     ck_val = [None] * len(inhand)
     ck_btn = [None] * len(inhand)
@@ -152,7 +157,7 @@ def click_button2():
         ck_btn[i] = Checkbutton(win_b2, text=inhand[i], font=("System", 20),
                                 variable=ck_val[i])
 
-        if i < 10:
+        if i < 15:
             count = 100 + 40 * i
             ck_btn[i].place(x=30, y=count)
         else:
@@ -171,9 +176,6 @@ def click_button2():
     btn_b2.place(x=200, y=count + 80)
 
     win_b2.mainloop()
-
-
-num = 0  # 글로벌 변수 / 이미지 출력 시 사용.
 
 
 # 만들 수 있는 칵테일 목록을 새 창으로 출력
@@ -309,10 +311,17 @@ def valid_to_make_list(hold):
 def click_button3():
     win_b3 = Toplevel()
     win_b3.title("프로그램 사용 방법")
-    win_b3.geometry("500x700")
+    win_b3.geometry("700x700")
     win_b3.option_add("*Font", "맑은고딕 20")
-    label = Label(win_b3, text='이미지 출처 :\n<a href=\'\nhttps://kor.pngtree.com/so/칵테일\'\n>칵테일 png에서 kor.pngtree.com</a>')
-    label.pack()
+
+    image_path = str(pathlib.Path(__file__).parent.absolute())
+    image_path = image_path.replace("\\", "/", 10)
+
+    load = Image.open(image_path + '/images/program_instruction.png')
+    photo = ImageTk.PhotoImage(load)
+    label = Label(win_b3, image=photo)
+    label.image = photo
+    label.place(x=0, y=0)
 
 
 def click_button4():
